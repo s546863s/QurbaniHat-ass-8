@@ -24,7 +24,7 @@ export default function RootLayout({ children }) {
       className={`${poppins.className}`}
     >
       <body className="">
-        <h1>Hello</h1>
+        
  <NavBar></NavBar>
         {children}
         
