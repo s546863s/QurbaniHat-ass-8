@@ -6,7 +6,7 @@ const FeaturedAnimals = async () => {
   
   let animals = [];
   try {
-    const res = await fetch("https://qurbani-hat-ass-8.vercel.app/animals.json", {
+    const res = await fetch("https://qurbani-hat-ass-8.vercel.app/data.json", {
       cache: "no-store", 
     });
     animals = await res.json();
@@ -37,9 +37,9 @@ const FeaturedAnimals = async () => {
           >
             <figure className="h-64 relative overflow-hidden">
             <Image 
-  src={animal.image} // এখানে href এর বদলে src হবে
+  src={animal.image} 
   alt={animal.name}
-  width={500} // Next.js ইমেজ ব্যবহারের জন্য উইডথ এবং হাইট দেওয়া বাধ্যতামূলক (অথবা fill ব্যবহার করতে হবে)
+  width={500} 
   height={500}
   className="object-cover w-full h-full group-hover:scale-110 transition-transform duration-500"
 />
