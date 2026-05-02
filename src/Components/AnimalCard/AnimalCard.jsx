@@ -5,7 +5,7 @@ import { FaArrowRight } from "react-icons/fa";
 
 
 const AnimalCard = ({animal}) => {
-    console.log(animal);
+    // console.log(animal);
     return (
         <div>
                  
