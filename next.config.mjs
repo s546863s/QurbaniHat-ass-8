@@ -9,6 +9,7 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'uploads-master.aws.bengalmeat.com',
       },
+      
     ],
   },
 };
