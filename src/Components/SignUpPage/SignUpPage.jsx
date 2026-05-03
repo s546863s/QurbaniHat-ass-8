@@ -1,33 +1,66 @@
 "use client";
+import React from "react";
 import Link from "next/link";
 
 import {
+  FaUser,
+  FaLink,
   FaEnvelope,
   FaLock,
   FaCheck,
   FaUndo,
 } from "react-icons/fa";
 
-const Login = () => {
+const SignUpPage = () => {
   return (
     <div className="min-h-[80vh] flex items-center justify-center px-4 py-10 bg-base-200">
-     
+      
 
       <div className="card w-full max-w-[500px] bg-base-100 shadow-2xl border border-gray-100 rounded-[2.5rem] overflow-hidden">
-        {/* Top Decorative Border */}
         <div className="h-2 bg-primary w-full"></div>
 
         <div className="card-body p-8 md:p-12">
           <div className="text-center mb-8">
             <h1 className="text-4xl font-black text-gray-800 font-heading">
-              Welcome <span className="text-primary">Back</span>
+              Join <span className="text-primary">Us</span>
             </h1>
             <p className="text-gray-400 mt-2 font-medium">
-              Log in to manage your animals and account
+              Create your account to find the best animals
             </p>
           </div>
 
-          <form className="space-y-6">
+          <form className="space-y-5">
+            {/* Name Field */}
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text font-bold text-gray-600 flex items-center gap-2">
+                  <FaUser className="text-primary text-xs" /> Full Name
+                </span>
+              </label>
+              <input
+                type="text"
+                name="name"
+                placeholder="Ex: Md. Abdus Salam"
+                className="input input-bordered w-full rounded-xl focus:outline-primary bg-gray-50 border-gray-200"
+                required
+              />
+            </div>
+
+            {/* Image URL Field */}
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text font-bold text-gray-600 flex items-center gap-2">
+                  <FaLink className="text-primary text-xs" /> Profile Image URL
+                </span>
+              </label>
+              <input
+                type="url"
+                name="image"
+                placeholder="https://example.com/photo.jpg"
+                className="input input-bordered w-full rounded-xl focus:outline-primary bg-gray-50 border-gray-200"
+              />
+            </div>
+
             {/* Email Field */}
             <div className="form-control">
               <label className="label">
@@ -38,7 +71,7 @@ const Login = () => {
               <input
                 type="email"
                 name="email"
-                placeholder="yourname@example.com"
+                placeholder="john@example.com"
                 className="input input-bordered w-full rounded-xl focus:outline-primary bg-gray-50 border-gray-200"
                 required
               />
@@ -58,11 +91,11 @@ const Login = () => {
                 className="input input-bordered w-full rounded-xl focus:outline-primary bg-gray-50 border-gray-200"
                 required
               />
-              <div className="flex justify-end mt-2">
-                <Link href="/forgot-password" size="sm" className="text-xs text-primary hover:underline">
-                  Forgot Password?
-                </Link>
-              </div>
+              <label className="label">
+                <span className="label-text-alt text-gray-400 italic">
+                  Must be 8+ chars with 1 uppercase & 1 number
+                </span>
+              </label>
             </div>
 
             {/* Action Buttons */}
@@ -71,7 +104,7 @@ const Login = () => {
                 type="submit"
                 className="btn btn-primary flex-1 text-white rounded-xl shadow-lg shadow-primary/30 hover:scale-105 transition-all"
               >
-                <FaCheck /> Log In
+                <FaCheck /> SignUp
               </button>
               <button
                 type="reset"
@@ -82,14 +115,14 @@ const Login = () => {
             </div>
           </form>
 
-          {/* Footer Navigation */}
+          {/* Footer Link */}
           <p className="text-center mt-8 text-sm text-gray-500">
-            Do not have an account?
+            Already have an account?
             <Link
-              href="/signUp"
+              href="/login"
               className="text-primary font-bold ml-1 hover:underline"
             >
-              Sign Up
+              Sign In
             </Link>
           </p>
         </div>
@@ -98,4 +131,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default SignUpPage;

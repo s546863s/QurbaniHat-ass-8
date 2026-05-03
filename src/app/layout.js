@@ -17,7 +17,7 @@ export const metadata = {
     template: "%s | QurbaniHat", 
   },
   icons: {
-    icon: "/favicon.webp", // যদি আলাদা ফোল্ডারে আইকন রাখেন
+    icon: "/favicon.webp", 
   },
 };
 
