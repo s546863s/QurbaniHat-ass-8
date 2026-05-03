@@ -13,49 +13,49 @@ import {
 } from "react-icons/fa";
 
 const Login = () => {
-  const [loading, setLoading] = useState(false);
+  // const [loading, setLoading] = useState(false);
 
-  const onSubmit = async (e) => {
-    e.preventDefault();
-    setLoading(true);
+  // const onSubmit = async (e) => {
+  //   e.preventDefault();
+  //   setLoading(true);
 
-    const formData = new FormData(e.target);
-    const { email, password } = Object.fromEntries(formData.entries());
+  //   const formData = new FormData(e.target);
+  //   const { email, password } = Object.fromEntries(formData.entries());
 
-    try {
-      const { data, error } = await authClient.signIn.email({
-        email,
-        password,
-        callbackURL: "/", // লগইন সফল হলে যেখানে রিডাইরেক্ট হবে
-      }, {
-        onRequest: () => {
-          setLoading(true);
-        },
-        onSuccess: () => {
-          setLoading(false);
-          toast.success("Welcome back! Logging in...", {
-            position: "top-center",
-            autoClose: 2000,
-            theme: "colored",
-          });
-        },
-        onError: (ctx) => {
-          setLoading(false);
-          toast.error(ctx.error.message || "Invalid email or password!", {
-            position: "top-center",
-            theme: "dark",
-          });
-        },
-      });
+  //   try {
+  //     const { data, error } = await authClient.signIn.email({
+  //       email,
+  //       password,
+  //       callbackURL: "/", // লগইন সফল হলে যেখানে রিডাইরেক্ট হবে
+  //     }, {
+  //       onRequest: () => {
+  //         setLoading(true);
+  //       },
+  //       onSuccess: () => {
+  //         setLoading(false);
+  //         toast.success("Welcome back! Logging in...", {
+  //           position: "top-center",
+  //           autoClose: 2000,
+  //           theme: "colored",
+  //         });
+  //       },
+  //       onError: (ctx) => {
+  //         setLoading(false);
+  //         toast.error(ctx.error.message || "Invalid email or password!", {
+  //           position: "top-center",
+  //           theme: "dark",
+  //         });
+  //       },
+  //     });
 
-      if (error) {
-        toast.error(error.message);
-      }
-    } catch (err) {
-      setLoading(false);
-      toast.error("An unexpected error occurred.");
-    }
-  };
+  //     if (error) {
+  //       toast.error(error.message);
+  //     }
+  //   } catch (err) {
+  //     setLoading(false);
+  //     toast.error("An unexpected error occurred.");
+  //   }
+  // };
 
   return (
     <div className="min-h-[80vh] flex items-center justify-center px-4 py-10 bg-base-200">

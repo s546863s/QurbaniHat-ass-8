@@ -19,51 +19,51 @@ const SignUpPage = () => {
     
   const [loading, setLoading] = useState(false);
 
-  const onSubmit = async (e) => {
-    e.preventDefault();
-    setLoading(true);
+  // const onSubmit = async (e) => {
+  //   e.preventDefault();
+  //   setLoading(true);
 
-    const formData = new FormData(e.target);
-    const { name, image, email, password } = Object.fromEntries(formData.entries());
+  //   const formData = new FormData(e.target);
+  //   const { name, image, email, password } = Object.fromEntries(formData.entries());
 
-    try {
-      const { data, error } = await authClient.signUp.email({
-        email,
-        password,
-        name,
-        image: image || "",
-        callbackURL: "/", 
-      }, {
-        onRequest: () => {
-          setLoading(true);
-        },
-        onSuccess: () => {
-          setLoading(false);
-          toast.success("Account created successfully! Redirecting...", {
-            position: "top-center",
-            autoClose: 3000,
-            theme: "colored",
-          });
-          e.target.reset(); 
-        },
-        onError: (ctx) => {
-          setLoading(false);
-          toast.error(ctx.error.message || "Something went wrong!", {
-           position: "top-center",
-            theme: "colored",
-          });
-        },
-      });
+  //   try {
+  //     const { data, error } = await authClient.signUp.email({
+  //       email,
+  //       password,
+  //       name,
+  //       image: image || "",
+  //       callbackURL: "/", 
+  //     }, {
+  //       onRequest: () => {
+  //         setLoading(true);
+  //       },
+  //       onSuccess: () => {
+  //         setLoading(false);
+  //         toast.success("Account created successfully! Redirecting...", {
+  //           position: "top-center",
+  //           autoClose: 3000,
+  //           theme: "colored",
+  //         });
+  //         e.target.reset(); 
+  //       },
+  //       onError: (ctx) => {
+  //         setLoading(false);
+  //         toast.error(ctx.error.message || "Something went wrong!", {
+  //          position: "top-center",
+  //           theme: "colored",
+  //         });
+  //       },
+  //     });
 
-      if (error) {
+  //     if (error) {
         
-        toast.error(error.message);
-      }
-    } catch (err) {
-      setLoading(false);
-      toast.error("An unexpected error occurred.");
-    }
-  };
+  //       toast.error(error.message);
+  //     }
+  //   } catch (err) {
+  //     setLoading(false);
+  //     toast.error("An unexpected error occurred.");
+  //   }
+  // };
 
   return (
     <div className="min-h-[80vh] flex items-center justify-center px-4 py-10 bg-base-200">
