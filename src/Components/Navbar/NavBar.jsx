@@ -54,7 +54,7 @@ const NavBar = ({ session }) => {
         ) : (
           <div className="flex gap-2">
             <Link href="/login" className="btn btn-ghost btn-sm hidden sm:flex">Login</Link>
-            <Link href="/register" className="btn btn-primary btn-sm text-white">Register</Link>
+            <Link href="/signUp" className="btn btn-primary btn-sm text-white">Register</Link>
           </div>
         )}
       </div>
