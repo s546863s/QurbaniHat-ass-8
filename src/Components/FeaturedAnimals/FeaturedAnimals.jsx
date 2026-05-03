@@ -3,10 +3,12 @@ import AnimalCard from "../AnimalCard/AnimalCard";
 
 const FeaturedAnimals = async () => {
   let animals = [];
+
   try {
     const res = await fetch("https://qurbani-hat-ass-8.vercel.app/data.json", {
-      cache: "no-store",
-    });
+    cache: "no-store", 
+  });
+
     animals = await res.json();
   } catch (error) {
     console.error("Error fetching animals:", error);

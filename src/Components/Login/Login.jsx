@@ -74,8 +74,8 @@ const Login = () => {
               Log in to manage your animals and account
             </p>
           </div>
-
-          <form onSubmit={onSubmit} className="space-y-6">
+    {/* onSubmit={onSubmit} */}
+          <form  className="space-y-6">
             {/* Email Field */}
             <div className="form-control">
               <label className="label">
