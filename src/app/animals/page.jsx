@@ -1,5 +1,6 @@
 
 import AnimalsList from "@/Components/AnimalsList/AnimalsList";
+import BannerMarquee from "@/Components/BannerMarquee/BannerMarquee";
 
 export const metadata = {
   title: "All Animals | QurbaniHat - find the best livestock",
@@ -31,6 +32,9 @@ const AnimalsPage = async () => {
 
   return (
     <div className="container mx-auto px-4 py-10 min-h-screen">
+       <div className="mb-4">
+         <BannerMarquee />
+       </div>
       <AnimalsList initialAnimals={animals} />
     </div>
   );
