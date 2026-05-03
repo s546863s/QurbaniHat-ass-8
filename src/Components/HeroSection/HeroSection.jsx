@@ -30,7 +30,7 @@ const HeroSection = () => {
   ];
 
   return (
-    <div className="relative w-full h-[70vh] md:h-[80vh] overflow-hidden  mt-6 shadow-2xl">
+    <div className="relative w-full h-[70vh] md:h-[80vh] overflow-hidden   shadow-2xl">
       {banners.map((banner) => (
         <div
           key={banner.id}
