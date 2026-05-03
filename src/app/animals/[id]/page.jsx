@@ -8,6 +8,24 @@ import {
   FaCheckCircle,
 } from "react-icons/fa";
 
+
+
+export async function generateMetadata({ params }) {
+  const { id } = await params;
+  
+  
+  const res = await fetch("https://qurbani-hat-ass-8.vercel.app/data.json");
+  const animals = await res.json();
+  const animal = animals.find(a => a.id == id);
+
+  return {
+    title: animal ? `${animal.name} | QurbaniHat` : "Animal Details",
+    description: animal?.description || "Details of the animal",
+  };
+}
+
+
+
 const CardDetails = async ({ params }) => {
   const { id } = await params;
 
