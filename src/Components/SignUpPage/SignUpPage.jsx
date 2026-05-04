@@ -36,7 +36,7 @@ const SignUpPage = () => {
 
 
   return (
-    <div className="min-h-[80vh] flex items-center justify-center px-4 py-10 bg-base-200">
+    <div className="min-h-[80vh] flex items-center justify-center px-4 py-10  bg-amber-500">
       
 
       <div className="card w-full max-w-[500px] bg-base-100 shadow-2xl border border-gray-100 rounded-[2.5rem] overflow-hidden">
