@@ -69,7 +69,7 @@ const SignUpPage = () => {
         <div className="card-body p-8 md:p-12">
           <div className="text-center mb-10">
             <h1 className="text-4xl font-black text-gray-800 tracking-tight">
-              Join <span className="text-primary italic">Us</span>
+              Join <span className="text-primary italic">Us</span> <span></span>
             </h1>
             <p className="text-gray-400 mt-2 font-medium">
               Start your journey with the best animal community
