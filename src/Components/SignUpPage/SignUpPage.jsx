@@ -12,6 +12,7 @@ import {
   FaCheck,
   FaUndo,
 } from "react-icons/fa";
+import { authClient } from "@/lib/auth-client";
 
 const SignUpPage = () => {
 
@@ -21,7 +22,7 @@ const SignUpPage = () => {
   
 
   
-    const handelSignUpFunc = (data) =>{
+    const handelSignUpFunc = async(data) =>{
      
   
       console.log(data);
@@ -30,13 +31,31 @@ const SignUpPage = () => {
 
       console.log(FullName, imageUrl, email, password)
   
+      const {data: res, error} = await authClient.signUp.email(
+        {
+          name: FullName, // required
+          email: email, // required
+          password: password, // required
+          image: imageUrl,
+          callbackURL: "/",
+        }
+      );
+
+      console.log(res, error);
   
-  
+if(res){
+  alert(res.message)
+}
+
+if(error){
+  alert("Log in SecessFul");
+}
+
     }
 
 
   return (
-    <div className="min-h-[80vh] flex items-center justify-center px-4 py-10  bg-amber-500">
+    <div className="min-h-[80vh] flex items-center justify-center px-4 py-10  bg-base-200">
       
 
       <div className="card w-full max-w-[500px] bg-base-100 shadow-2xl border border-gray-100 rounded-[2.5rem] overflow-hidden">
