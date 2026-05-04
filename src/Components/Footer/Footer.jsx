@@ -58,7 +58,7 @@ const Footer = () => {
       {/* Bottom Copyright Section */}
       <div className="divider divider-neutral px-12 mt-12 opacity-30"></div>
       <div className="text-center text-sm text-gray-400">
-        <p>© {new Date().getFullYear()} - All right reserved by Md. Abdus Salam</p>
+        <p>©<span></span> {new Date().getFullYear()} - All right reserved by Md. Abdus Salam</p>
       </div>
     </footer>
   );
