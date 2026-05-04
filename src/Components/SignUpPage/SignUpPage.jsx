@@ -27,7 +27,7 @@ const SignUpPage = () => {
   } = useForm();
 
  const router = useRouter(); 
-  // ... অন্যান্য স্টেট
+  
 
   const handelSignUpFunc = async (data) => {
     setLoading(true);
@@ -39,14 +39,14 @@ const SignUpPage = () => {
         email: email,
         password: password,
         image: imageUrl,
-        callbackURL: "/", // এটি সার্ভার-সাইড রিডাইরেক্টের জন্য
+         
       });
 
       if (res) {
         toast.success("Account created successfully!");
         reset(); 
         
-        // ৩. ক্লায়েন্ট-সাইড রিডাইরেক্ট নিশ্চিত করতে এটি ব্যবহার করুন
+        
         router.push("/"); 
       }
 
