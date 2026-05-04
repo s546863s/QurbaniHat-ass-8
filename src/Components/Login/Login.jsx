@@ -51,6 +51,21 @@ const Login = () => {
     }
   };
 
+  const handalWithGoole = async () =>{
+
+  
+    
+  const data = await authClient.signIn.social({
+    provider: "google",
+  });
+
+
+  }
+
+
+
+
+
   return (
     <div className="min-h-[90vh] flex items-center justify-center px-4 py-12 bg-base-200">
       <ToastContainer position="top-center" />
@@ -158,6 +173,9 @@ const Login = () => {
               Sign Up
             </Link>
           </p>
+        </div>
+        <div className="">
+          <button className="cursor-pointer" onClick={handalWithGoole}>sign with google</button>
         </div>
       </div>
     </div>
