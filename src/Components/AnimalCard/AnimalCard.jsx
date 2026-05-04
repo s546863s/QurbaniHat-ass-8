@@ -44,7 +44,7 @@ const AnimalCard = ({ animal }) => {
     <div className="group relative bg-white rounded-[2.5rem] p-3 shadow-sm hover:shadow-2xl transition-all duration-500 border border-transparent hover:border-primary/20">
       
       {/* Image Section */}
-      <div className="relative h-64 w-full overflow-hidden rounded-[2rem]">
+      <div className="relative h-64 w-full overflow-hidden rounded-4xl">
         <Image
           src={animal.image}
           alt={animal.name}
@@ -53,7 +53,7 @@ const AnimalCard = ({ animal }) => {
         />
         
         {/* Price Tag - Floating Gradient */}
-        <div className="absolute top-4 right-4 bg-gradient-to-r from-primary to-secondary text-white px-5 py-2 rounded-2xl font-black shadow-lg backdrop-blur-sm bg-opacity-90">
+        <div className="absolute top-4 right-4 bg-linear-to-r from-primary to-secondary text-white px-5 py-2 rounded-2xl font-black shadow-lg backdrop-blur-sm bg-opacity-90">
           ৳ {animal.price}
         </div>
 
@@ -102,7 +102,7 @@ const AnimalCard = ({ animal }) => {
         <button
           onClick={handleNavigation}
           disabled={isRedirecting}
-          className="relative w-full overflow-hidden group/btn btn border-none bg-gradient-to-r from-primary to-secondary hover:from-secondary hover:to-primary text-white rounded-2xl h-14 font-bold shadow-lg shadow-primary/20 transition-all active:scale-95 disabled:opacity-70"
+          className="relative w-full overflow-hidden group/btn btn border-none bg-linear-to-r from-primary to-secondary hover:from-secondary hover:to-primary text-white rounded-2xl h-14 font-bold shadow-lg shadow-primary/20 transition-all active:scale-95 disabled:opacity-70"
         >
           {isRedirecting ? (
             <FaSpinner className="animate-spin text-xl" />
@@ -114,7 +114,7 @@ const AnimalCard = ({ animal }) => {
           )}
           
           {/* Subtle Shine Effect */}
-          <div className="absolute top-0 -inset-full h-full w-1/2 z-5 block transform -skew-x-12 bg-gradient-to-r from-transparent to-white opacity-20 group-hover:animate-shine" />
+          <div className="absolute top-0 -inset-full h-full w-1/2 z-5 block transform -skew-x-12 bg-linear-to-r from-transparent to-white opacity-20 group-hover:animate-shine" />
         </button>
       </div>
     </div>

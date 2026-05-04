@@ -150,7 +150,7 @@ const Login = () => {
 
           {/* Footer Navigation */}
           <p className="text-center mt-10 text-sm text-gray-500 font-medium">
-            Don't have an account?
+            Don&apos;t have an account?
             <Link
               href="/signUp"
               className="text-primary font-bold ml-1 hover:underline transition-all"
