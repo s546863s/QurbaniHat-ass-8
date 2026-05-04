@@ -3,13 +3,16 @@ const nextConfig = {
   /* config options here */
   reactCompiler: true,
 
-  images: {
+ images: {
     remotePatterns: [
       {
-        protocol: 'https',
-        hostname: 'uploads-master.aws.bengalmeat.com',
+        protocol: "https",
+        hostname: "**",
       },
-      
+      {
+        protocol: "http",
+        hostname: "**",
+      },
     ],
   },
 };
