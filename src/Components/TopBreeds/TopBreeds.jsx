@@ -39,7 +39,7 @@ const TopBreeds = () => {
             </div>
             
             <div>
-              <h4 className="font-bold text-lg group-hover:text-primary transition-colors">{breed.name}</h4>
+              <h4 className="font-bold text-lg group-hover:text-primary transition-colors">{breed.name} <span></span> </h4>
               <span className="text-sm text-gray-400 font-medium">{breed.count}</span>
             </div>
           </Link>
