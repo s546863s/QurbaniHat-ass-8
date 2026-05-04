@@ -39,15 +39,17 @@ const SignUpPage = () => {
         email: email,
         password: password,
         image: imageUrl,
-         
+        
       });
 
       if (res) {
+        router.push("/"); 
+
         toast.success("Account created successfully!");
         reset(); 
         
         
-        router.push("/"); 
+        
       }
 
       if (error) {
