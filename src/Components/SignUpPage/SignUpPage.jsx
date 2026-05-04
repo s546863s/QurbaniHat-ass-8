@@ -14,6 +14,7 @@ import {
   FaSpinner,
 } from "react-icons/fa";
 import { authClient } from "@/lib/auth-client";
+import { useRouter } from "next/navigation";
 
 const SignUpPage = () => {
   const [loading, setLoading] = useState(false);
@@ -25,6 +26,9 @@ const SignUpPage = () => {
     formState: { errors },
   } = useForm();
 
+ const router = useRouter(); 
+  // ... অন্যান্য স্টেট
+
   const handelSignUpFunc = async (data) => {
     setLoading(true);
     const { FullName, imageUrl, email, password } = data;
@@ -35,12 +39,15 @@ const SignUpPage = () => {
         email: email,
         password: password,
         image: imageUrl,
-        callbackURL: "/",
+        callbackURL: "/", // এটি সার্ভার-সাইড রিডাইরেক্টের জন্য
       });
 
       if (res) {
         toast.success("Account created successfully!");
-        reset(); // reset form
+        reset(); 
+        
+        // ৩. ক্লায়েন্ট-সাইড রিডাইরেক্ট নিশ্চিত করতে এটি ব্যবহার করুন
+        router.push("/"); 
       }
 
       if (error) {
@@ -52,7 +59,6 @@ const SignUpPage = () => {
       setLoading(false);
     }
   };
-
   return (
     <div className="min-h-[90vh] flex items-center justify-center px-4 py-12 bg-base-200">
       <ToastContainer position="top-center" />
