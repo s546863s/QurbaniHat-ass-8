@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import { useForm } from "react-hook-form";
 
 import {
   FaEnvelope,
@@ -9,8 +10,22 @@ import {
 } from "react-icons/fa";
 
 const Login = () => {
-  const handelLoginFunc = (e) =>{
-    e.preventDefault()
+  const {register, handleSubmit, watch, formState: { errors },} =  useForm();
+
+  
+
+  const handelLoginFunc = (data) =>{
+    // e.preventDefault();
+    // const email = e.target.email.value;
+    // const password = e.target.password.value;
+    // console.log(email, password);
+
+    // react hook form
+
+    console.log(data);
+
+
+
   }
 
 
@@ -33,7 +48,7 @@ const Login = () => {
             </p>
           </div>
 
-          <form className="space-y-6">
+          <form className="space-y-6" onSubmit={handleSubmit(handelLoginFunc)}>
             {/* Email Field */}
             <div className="form-control">
               <label className="label">
@@ -43,11 +58,18 @@ const Login = () => {
               </label>
               <input
                 type="email"
-                name="email"
+                // name="email"
+                 {...register("email", { required: "Email Field is required" })} 
                 placeholder="yourname@example.com"
                 className="input input-bordered w-full rounded-xl focus:outline-primary bg-gray-50 border-gray-200"
-                required
+                // required
               />
+              
+           {errors.email && <p className="text-red-500 mt-1">{errors.email.message}</p>}
+
+
+
+
             </div>
 
             {/* Password Field */}
@@ -59,11 +81,13 @@ const Login = () => {
               </label>
               <input
                 type="password"
-                name="password"
+                // name="password"
+                 {...register("password", { required: "Password Field is required" })} 
                 placeholder="••••••••"
                 className="input input-bordered w-full rounded-xl focus:outline-primary bg-gray-50 border-gray-200"
-                required
+                // required
               />
+              {errors.password && <p className="text-red-500 mt-1">{errors.password.message}</p>}
               <div className="flex justify-end mt-2">
                 <Link href="/forgot-password" size="sm" className="text-xs text-primary hover:underline">
                   Forgot Password?
@@ -74,6 +98,7 @@ const Login = () => {
             {/* Action Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
               <button
+
                 type="submit"
                 className="btn btn-primary flex-1 text-white rounded-xl shadow-lg shadow-primary/30 hover:scale-105 transition-all"
               >

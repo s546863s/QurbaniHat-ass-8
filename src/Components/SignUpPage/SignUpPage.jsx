@@ -1,6 +1,8 @@
 "use client";
 import React from "react";
 import Link from "next/link";
+import { useForm } from "react-hook-form";
+
 
 import {
   FaUser,
@@ -12,6 +14,27 @@ import {
 } from "react-icons/fa";
 
 const SignUpPage = () => {
+
+
+   const {register, handleSubmit, watch, formState: { errors },} =  useForm();
+  
+  
+
+  
+    const handelSignUpFunc = (data) =>{
+     
+  
+      console.log(data);
+
+      const {FullName, imageUrl, email, password} = data;
+
+      console.log(FullName, imageUrl, email, password)
+  
+  
+  
+    }
+
+
   return (
     <div className="min-h-[80vh] flex items-center justify-center px-4 py-10 bg-base-200">
       
@@ -29,7 +52,7 @@ const SignUpPage = () => {
             </p>
           </div>
 
-          <form className="space-y-5">
+          <form className="space-y-5" onSubmit={handleSubmit(handelSignUpFunc)}>
             {/* Name Field */}
             <div className="form-control">
               <label className="label">
@@ -38,12 +61,14 @@ const SignUpPage = () => {
                 </span>
               </label>
               <input
+              {...register("FullName", { required: "Full Name Field is required" })} 
                 type="text"
-                name="name"
                 placeholder="Ex: Md. Abdus Salam"
                 className="input input-bordered w-full rounded-xl focus:outline-primary bg-gray-50 border-gray-200"
-                required
+                
               />
+                         {errors.FullName && <p className="text-red-500 mt-1">{errors.FullName.message}</p>}
+
             </div>
 
             {/* Image URL Field */}
@@ -54,11 +79,13 @@ const SignUpPage = () => {
                 </span>
               </label>
               <input
-                type="url"
-                name="image"
+            {...register("imageUrl", { required: "Image url Field is required" })} 
+              type="text"
                 placeholder="https://example.com/photo.jpg"
                 className="input input-bordered w-full rounded-xl focus:outline-primary bg-gray-50 border-gray-200"
               />
+         {errors.imageUrl && <p className="text-red-500 mt-1">{errors.imageUrl.message}</p>}
+
             </div>
 
             {/* Email Field */}
@@ -69,12 +96,14 @@ const SignUpPage = () => {
                 </span>
               </label>
               <input
-                type="email"
-                name="email"
+               {...register("email", { required: "Email Field is required" })} 
+              type="email"
                 placeholder="john@example.com"
                 className="input input-bordered w-full rounded-xl focus:outline-primary bg-gray-50 border-gray-200"
-                required
+                
               />
+             {errors.email && <p className="text-red-500 mt-1">{errors.email.message}</p>}
+
             </div>
 
             {/* Password Field */}
@@ -85,12 +114,14 @@ const SignUpPage = () => {
                 </span>
               </label>
               <input
+               {...register("password", { required: "Password Field is required" })} 
                 type="password"
-                name="password"
                 placeholder="••••••••"
                 className="input input-bordered w-full rounded-xl focus:outline-primary bg-gray-50 border-gray-200"
-                required
+                
               />
+                         {errors.password && <p className="text-red-500 mt-1">{errors.password.message}</p>}
+
               <label className="label">
                 <span className="label-text-alt text-gray-400 italic">
                   Must be 8+ chars with 1 uppercase & 1 number
