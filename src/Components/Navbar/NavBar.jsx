@@ -2,20 +2,19 @@
 import { authClient } from '@/lib/auth-client';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 const NavBar = () => {
+  const { data: session } = authClient.useSession();
+  const router = useRouter();
 
-  const { data: session } = authClient.useSession()
-
-  const user = session?.user;
-
-  console.log(user);
-
-  console
+  const handleLogout = async () => {
+    await authClient.signOut();
+    router.push("/login");
+  };
 
   return (
     <div className="navbar bg-base-100 shadow-sm px-4 md:px-12 sticky top-0 z-50">
-      {/* Navbar Start: Mobile Menu & Logo */}
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -33,7 +32,6 @@ const NavBar = () => {
         </Link>
       </div>
 
-      {/* Navbar Center: Desktop Menu */}
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1 font-medium">
           <li><Link href="/">Home</Link></li>
@@ -41,30 +39,46 @@ const NavBar = () => {
         </ul>
       </div>
 
-      {/* Navbar End: Auth & Profile */}
-      <div className="navbar-end gap-2">
+      <div className="navbar-end gap-3">
         {session ? (
-          <div className="dropdown dropdown-end">
-            <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar border-2 border-primary">
-              <div className="w-10 rounded-full relative">
-                <Image 
-                  alt="User" 
-                  src={session?.user?.image || "/default-avatar.png"} 
-                  fill 
-                  className="object-cover"
-                />
+          <div className="flex items-center gap-3">
+            {/* user name */}
+            <span className="hidden sm:block font-bold text-gray-700">
+              {session?.user?.name}
+            </span>
+
+            {/* profile image dropdown */}
+            <div className="dropdown dropdown-end">
+              <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar border-2 border-primary">
+                <div className="w-10 rounded-full relative">
+                  <Image 
+                    alt="User" 
+                    src={session?.user?.image || "/default-avatar.png"} 
+                    fill 
+                    className="object-cover"
+                  />
+                </div>
               </div>
+              <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-20 p-2 shadow bg-base-100 rounded-box w-52 border border-gray-100">
+                <li className="sm:hidden px-4 py-2 font-bold text-primary border-b border-gray-100">
+                   {session?.user?.name}
+                </li>
+                <li><Link href="/my-profile">My Profile</Link></li>
+                <li><Link href="/animals">View Shop</Link></li>
+              </ul>
             </div>
-            <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-20 p-2 shadow bg-base-100 rounded-box w-52">
-              <li className="px-4 py-2 font-bold text-gray-500">{session?.user?.name}</li>
-              <div className="divider my-0"></div>
-              <li><Link href="/my-profile">My Profile</Link></li>
-              <li><button className="text-error font-semibold">Logout</button></li>
-            </ul>
+
+            {/* Logout Button */}
+            <button 
+              onClick={handleLogout}
+              className="btn btn-outline btn-error btn-sm rounded-lg hidden sm:flex"
+            >
+              Logout
+            </button>
           </div>
         ) : (
           <div className="flex gap-2">
-            <Link href="/login" className="btn btn-ghost btn-sm hidden sm:flex">Login</Link>
+            <Link href="/login" className="btn btn-ghost btn-sm">Login</Link>
             <Link href="/signUp" className="btn btn-primary btn-sm text-white">Register</Link>
           </div>
         )}

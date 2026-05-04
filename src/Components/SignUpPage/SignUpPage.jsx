@@ -40,7 +40,7 @@ const SignUpPage = () => {
 
       if (res) {
         toast.success("Account created successfully!");
-        reset(); // ফরম রিসেট করার জন্য
+        reset(); // reset form
       }
 
       if (error) {
