@@ -45,7 +45,7 @@ const HeroSection = () => {
             fill
             priority
             className="object-fill"
-            quality={100}
+            
           />
           
           {/* Overlay and Centered Content */}
