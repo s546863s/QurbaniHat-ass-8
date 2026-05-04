@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import 'animate.css'; 
 
 const HeroSection = () => {
   const [activeSlide, setActiveSlide] = useState(1);
@@ -29,7 +30,7 @@ const HeroSection = () => {
   ];
 
   return (
-    <div className="relative  w-full h-[70vh] md:h-[80vh] overflow-hidden shadow-2xl ">
+    <div className="relative w-full h-[70vh] md:h-[80vh] overflow-hidden shadow-2xl">
       {banners.map((banner) => (
         <div
           key={banner.id}
@@ -37,45 +38,44 @@ const HeroSection = () => {
             activeSlide === banner.id ? "opacity-100 z-10" : "opacity-0 z-0"
           }`}
         >
-         {/* Background Image */}
+          {/* Background Image */}
           <Image
             src={banner.image}
             alt="Banners"
             fill
             priority
             className="object-fill"
-            
           />
 
-          {/* Overlay and Centered Content */}
+          
           <div className="absolute inset-0 bg-black/60 flex items-center justify-center text-center px-4">
-            <div className={`max-w-3xl text-white space-y-8 transition-all duration-1000 transform ${activeSlide === banner.id ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"}`}>
+            <div className={`max-w-3xl text-white space-y-8`}>
               
-              {/* Highlighted Title */}
-              <h1 className="text-2xl md:text-6xl font-black tracking-tight leading-[1.1] drop-shadow-2xl">
+              
+              <h1 className={`text-2xl md:text-6xl font-black tracking-tight leading-[1.1] drop-shadow-2xl 
+                ${activeSlide === banner.id ? "animate__animated animate__fadeInDown" : ""}`}>
                 {banner.title.split(" ").map((word, i) => (
-                  
                   <span key={i} className={i >= 3 ? "text-primary" : ""}>
                     {word}{" "}
                   </span>
                 ))}
               </h1>
 
-              {/* Refined Description */}
-              <p className="text-lg  text-gray-200 opacity-95 mx-auto max-w-xl leading-relaxed font-medium">
+              
+              <p className={`text-lg text-gray-200 opacity-95 mx-auto max-w-xl leading-relaxed font-medium 
+                ${activeSlide === banner.id ? "animate__animated animate__fadeInUp animate__delay-1s" : ""}`}>
                 {banner.desc}
               </p>
 
-              {/* Premium Button with Shine Effect */}
-              <div className="mb-2">
+              
+              <div className={`mb-2 ${activeSlide === banner.id ? "animate__animated animate__zoomIn animate__delay-1s" : ""}`}>
                 <Link
                   href="/animals"
-                  className="relative mb-16 overflow-hidden group/btn btn border-none bg-linear-to-r from-primary to-secondary hover:from-secondary hover:to-primary text-white rounded-2xl h-14 font-bold shadow-lg shadow-primary/20 transition-all active:scale-95 disabled:opacity-70"
+                  className="relative mb-16 overflow-hidden group/btn btn border-none bg-linear-to-r from-primary to-secondary hover:from-secondary hover:to-primary text-white rounded-2xl h-14 font-bold shadow-lg shadow-primary/20 transition-all active:scale-95 disabled:opacity-70 animate__animated animate__pulse animate__infinite animate__slow"
                 >
                   <span className="relative z-10 font-black text-xl uppercase tracking-wider">
                     Browse All Animals
                   </span>
-                  {/* Shine Animation */}
                   <div className="absolute top-0 -inset-full h-full w-1/2 z-5 block transform -skew-x-12 bg-linear-to-r from-transparent to-white opacity-30 group-hover/btn:animate-shine" />
                 </Link>
               </div>
@@ -85,7 +85,7 @@ const HeroSection = () => {
       ))}
 
       {/* Modern Slide Indicators */}
-      <div className="absolute bottom-10  left-1/2 -translate-x-1/2 z-20 flex gap-4 bg-black/20 backdrop-blur-md p-3 rounded-full">
+      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 flex gap-4 bg-black/20 backdrop-blur-md p-3 rounded-full">
         <button
           onClick={() => setActiveSlide(1)}
           className={`h-2 rounded-full transition-all duration-500 ${
