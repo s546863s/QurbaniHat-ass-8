@@ -28,7 +28,7 @@ export default function RootLayout({ children }) {
       data-theme="light"
       className={`${poppins.className}`}
     >
-      <body className="">
+      <body>
         
  <NavBar></NavBar>
         
