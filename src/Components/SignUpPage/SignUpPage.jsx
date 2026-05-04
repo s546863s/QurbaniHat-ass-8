@@ -44,11 +44,11 @@ const SignUpPage = () => {
       console.log(res, error);
   
 if(res){
-  alert(res.message)
+  alert("SingUp Sucessful")
 }
 
 if(error){
-  alert("Log in SecessFul");
+  alert(error.message);
 }
 
     }
